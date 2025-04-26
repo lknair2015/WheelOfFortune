@@ -1,0 +1,1 @@
+Its the initial draft. Works for small words. 
