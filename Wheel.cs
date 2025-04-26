@@ -15,14 +15,14 @@ namespace WheelOfFortune
             this.NoOfSegmants = 19;
         
         }
-        public int Bankrupt { get; set; } = 1;
-        public int LooseTurn { get; set; } = 2;
+        public const int Bankrupt = 1;
+        public const int LooseTurn = 2;
+        public int NoOfSegmants { get; set; }
         public List<int> Segmants
         {
             get { return _segmants; }
         }
-        public int NoOfSegmants { get; set; }
-
+        
         private List<int> _segmants = new List<int>();
 
         public List<int> SetWheel()
@@ -59,8 +59,6 @@ namespace WheelOfFortune
         {
 
             Random rand = new Random();
-
-            Console.WriteLine("Let's turn the wheel");
 
             int segNumer = rand.Next(0, NoOfSegmants);
 

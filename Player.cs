@@ -6,12 +6,22 @@ using System.Threading.Tasks;
 
 namespace WheelOfFortune
 {
-    internal class Player
+    public abstract class Player
     {
-        public Player() {
-        this.Balance = 0;
+        public Player() 
+        {
+            this.Balance = 0;
+            this.Name = string.Empty;   
+            this.MinimumPayout = 1000;
         }
-        public string Name;
-        public decimal Balance;
+        public string? Name {  get; set; } 
+        public decimal Balance {  get; set; }
+        public decimal MinimumPayout { get; set; }
+
+        public decimal CalculateFinalPayout()
+        {
+            if (this.Balance < this.MinimumPayout) { this.Balance = this.MinimumPayout; return this.Balance; }
+            else return this.Balance;
+        }
     }
 }

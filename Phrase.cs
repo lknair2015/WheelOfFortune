@@ -7,45 +7,37 @@ using System.Threading.Tasks;
 
 namespace WheelOfFortune
 {
-    internal class Phrase
+    internal class Phrase : Player
     {
         public Phrase() 
         {
-            this.PhraseString = "";
-            this.GuessedPhrase = "";
-            this.UserGuess = "";
+            this.PhraseString = string.Empty;
+            this.GuessedPhrase = string.Empty;
+            this.UserGuess = string.Empty;
+            
         } 
 
         public string PhraseString {  get; set; }
-
         public string GuessedPhrase { get; set; }
-        public int TotalNoOfLetters
-        {
-            get
-            {
-                char[] chars = PhraseString.ToCharArray();
-                return chars.Length;
-            }
-        }
-
         public string UserGuess { get; set; }
         public string Hint {  get; set; }
 
         private string _guessedPhrase;
+        int _count;
 
 
         public string BuyAVowel() {
 
             _guessedPhrase = "";
 
-            int count = 0;
+            _count = 0;
 
             for (int i = 0; i < PhraseString.Length; i++)
             {
-                if ("AEIOU".Contains(PhraseString[i].ToString()) && GuessedPhrase[i].ToString() == "_" && count< 1)
+                if ("AEIOU".Contains(PhraseString[i].ToString()) && GuessedPhrase[i].ToString() == "_" && _count< 1)
                 {
                     _guessedPhrase += PhraseString[i];
-                    count++;
+                    _count++;
                 }
                 else
                 {
@@ -90,17 +82,14 @@ namespace WheelOfFortune
 
         public int NoOfGuessedConsonants()
         {
-            int count = 0;
+            _count = 0;
             foreach (char c in PhraseString)
             {
                 if (c.ToString() == UserGuess)
-                    count++;
+                    _count++;
             }
-            return count;
+            return _count;
         }
-
-
-               
 
     }
 }
